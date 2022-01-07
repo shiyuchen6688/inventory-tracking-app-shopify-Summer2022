@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"
+        integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+        integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Inventory Tracking Application</title>
+
+</head>
+
+<body>
+    <h1 class="ui center aligned header">Inventory Tracking Application</h1>
+    <div class="ui divider"></div>
+
+    <div class="ui container">
+        <h2 class="ui left aligned header">Add Item Here</h2>
+        <form class="ui form item-form">
+            <div class="field">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" placeholder="Item Name" class="item-name" />
+            </div>
+
+
+            <div class="field">
+                <label for="description">Description</label>
+                <textarea name="description" id="description" placeholder="Item Descrition..."
+                    class="item-description"></textarea>
+            </div>
+
+            <button class="ui button large" type="submit">Add Item To Inventory</button>
+
+        </form>
+    </div>
+
+    <div class="ui divider"></div>
+
+    <div class="ui container">
+        <h2 class="ui left aligned header">List of Items in The Inventory</h2>
+        <section class="items-section">
+            <div class="ui loader loader-items"></div>
+            <div class="ui segments items">
+                <div class="ui segment">Content</div>
+                <div class="ui segment">Content</div>
+                <div class="ui segment">Content</div>
+                <div class="ui segment">Content</div>
+                <div class="ui segment">Content</div>
+            </div>
+        </section>
+    </div>
+
+
+
+    <!-- link to javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./index-script.js"></script>
+
+
+
+</body>
+
+</html>
