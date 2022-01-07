@@ -4,14 +4,15 @@ require('dotenv').config()
 const notFoundMiddleware = require("./middleware/not-found")
 const errorMiddleware = require("./middlewares/error-handler")
 const connectDB = require("db/connect")
-
+require("express-async-errors")
+const itemsRoute = requier("./routes/item")
 
 // middlewares
 app.use(express.static('./public'))
 app.use(express.json())
 
 // routes
-app.use('api/items', items)
+app.use('api/items', itemsRoute)
 
 // handle incorrect url
 app.use(notFoundMiddleware)
