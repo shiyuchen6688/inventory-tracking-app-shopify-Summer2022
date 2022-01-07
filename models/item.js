@@ -7,6 +7,14 @@ const ItemSchema = new mongoose.Schema({
         trim: true,
         maxLength: [30, "name is limited to 30 characters"],
     },
+    count: {
+        type: integer,
+        default: 0
+    },
+    category: {
+        type: String,
+        default: "General"
+    },
     description: {
         type: String,
         default: "No Description",

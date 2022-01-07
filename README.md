@@ -15,3 +15,4 @@ Here is a video explanation for thiw project: TODO
 - count: count of item in the inventory
 - category: category of this item
 - description: any other description for this item
+- dateCreated: first creation date of this item

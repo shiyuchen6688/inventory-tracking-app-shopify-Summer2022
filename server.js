@@ -22,7 +22,7 @@ app.use(errorMiddleware)
 const port = procee.env.PORT || 5000;
 const start = async () => {
     try {
-        await connectDB(process.env.MONGO_URI);
+        await connectDB(process.env.MONGO);
         app.listen(port, () => {
             console.log(`server listening on port ${port}`)
         })
