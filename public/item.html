@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"
+        integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+        integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Update Item</title>
+</head>
+
+<body>
+    <h1 class="ui center aligned header">Inventory Tracking Application</h1>
+    <div class="ui divider"></div>
+
+    <div class="ui container">
+        <h2 class="ui left aligned header">Update Item Here</h2>
+        <form class="ui form update-item-form">
+            <div class="field">
+                <label>Original Name</label>
+                <p class="task-original-name"></p>
+            </div>
+
+            <div class="field">
+                <label for="name">Name</label>
+                <input type="text" name="name" class="item-edit-name" />
+            </div>
+
+            <div class="field">
+                <label for="description">Description</label>
+                <textarea name="description" id="description" placeholder="Item Descrition..."
+                    class="item-edit-description"></textarea>
+            </div>
+            <button type="submit" class="ui button item-edit-btn">Update</button>
+        </form>
+
+        <div class="ui divider"></div>
+
+        <a href="index.html" class="ui button">Home</a>
+    </div>
+
+    <!-- link to javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./item-script.js"></script>
+
+</body>
+
+</html>
