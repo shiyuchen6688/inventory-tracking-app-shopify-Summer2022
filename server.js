@@ -1,0 +1,30 @@
+const express = require("express")
+const app = express()
+require('dotenv').config()
+const notFoundMiddleware = require("./middleware/not-found")
+const errorMiddleware = require("./middlewares/error-handler")
+
+
+// middlewares
+app.use(express.static('./public'))
+app.use(express.json())
+
+// routes
+app.use('api/items', items)
+
+// handle incorrect url
+app.use(notFoundMiddleware)
+app.use(errorMiddleware)
+
+// server listening on port
+const port = procee.env.PORT || 5000;
+const start = async () => {
+    try {
+        await connectDB(process.env.MONGO_URI);
+        app.listen(port, () => {
+            console.log(`server listening on port ${port}`)
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
