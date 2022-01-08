@@ -12,7 +12,12 @@ Here is a video explanation for thiw project: TODO
 
 - id: used to identify an item
 - name: name of item
-- count: count of item in the inventory
+- weight: weight of item in the inventory
 - category: category of this item
+- sourceAddress: source address of this item
+- sourcePhone: phone number of source
+- destinationAddress: destination address of this item
+- destinationPhone: phone number of destination
+- delivered: true if item is already delievered to destination
 - description: any other description for this item
 - dateCreated: first creation date of this item

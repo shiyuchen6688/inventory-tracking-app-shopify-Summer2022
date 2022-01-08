@@ -1,11 +1,15 @@
 const itemForm = document.querySelector(".item-form")
 const itemNameInput = document.querySelector(".item-name")
-const itemCountInput = document.querySelector(".item-count")
+const itemWeightInput = document.querySelector(".item-weight")
 const itemCategoryInput = document.querySelector(".item-category")
+const itemSrcAddrInput = document.querySelector(".item-src-addr")
+const itemSrcPhoneInput = document.querySelector(".item-src-phone")
+const itemDestAddrInput = document.querySelector(".item-dest-addr")
+const itemDestPhoneInput = document.querySelector(".item-dest-phone")
+const itemDelieveredInput = document.querySelector(".item-delivered")
 const itemDescrition = document.querySelector(".item-description")
 const itemsDiv = document.querySelector(".items")
 const loaderItems = document.querySelector(".loader-items")
-// TODO: get count and category
 
 // Display items onto index.html, get items in strorage from backend api
 const displayItems = async () => {
@@ -21,12 +25,26 @@ const displayItems = async () => {
         }
 
         const itemSegments = items.map((item) => {
-            const { _id, name, description, count, category, dateCreated } = item
+            const { _id, name, description, weight, category, dateCreated, sourceAddress, sourcePhone, destinationAddress, destinationPhone,
+                delivered } = item
+            let deliveredStr;
+            if (Boolean(delivered) === true)
+                deliveredStr = "Yes"
+            else
+                deliveredStr = "No"
+
+
             return `
             <div class="ui segment">
             <h4 class="ui dividing header">Name: ${name}</h5>
-            <p>Count: ${count}</h5>
+            <p>Weight: ${weight}</h5>
             <p>Category: ${category}</h5>
+            <p>Date Created: ${dateCreated}</h5>
+            <p>Source Address: ${sourceAddress}</h5>
+            <p>Source Phone: ${sourcePhone}</h5>
+            <p>Destination Address: ${destinationAddress}</h5>
+            <p>Destination Phone: ${destinationPhone}</h5>
+            <p>Delivered: ${deliveredStr}</h5>
             <p>Date Created: ${dateCreated}</h5>
             <p>Description: ${description}</p>
                 <div class="ui buttons">
@@ -82,10 +100,19 @@ itemForm.addEventListener("submit", async (e) => {
     try {
         const name = itemNameInput.value
         const category = itemCategoryInput.value
-        const count = Number(itemCountInput.value)
+        const weight = Number(itemWeightInput.value)
+        const sourceAddress = itemSrcAddrInput.value
+        const destinationAddress = itemDestAddrInput.value
+        const sourcePhone = itemSrcPhoneInput.value
+        const destinationPhone = itemDestPhoneInput.value
+        const delivered = itemDelieveredInput.checked
         const description = itemDescrition.value
 
-        await axios.post("api/items", { name, description, category, count })
+        await axios.post("api/items", {
+            name, description, category, weight, sourceAddress, destinationAddress,
+            sourcePhone, destinationPhone, delivered
+        })
+        alert("success, new item added, you can see it in the list below")
         displayItems()
     } catch (error) {
         alert(error)

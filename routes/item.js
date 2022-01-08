@@ -14,7 +14,7 @@ const {
 
 
 router.route('/download-csv').get(downloadExportCSV)
-router.route('/:id').get(getOneItem).patch(updateItem).delete(deleteItem)
+router.route('/:id').get(getOneItem).put(updateItem).delete(deleteItem)
 router.route('/').get(getAllItems).post(createItem)
 
 module.exports = router

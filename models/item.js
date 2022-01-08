@@ -17,19 +17,19 @@ const ItemSchema = new mongoose.Schema({
     },
     sourceAddress: {
         type: String,
-        default: "General"
+        default: "No Source Address Recorded"
     },
     sourcePhone: {
         type: String,
-        default: "General"
+        default: "No Source Phone Recorded"
     },
     destinationAddress: {
         type: String,
-        default: "General"
+        default: "No Destination Address Recorded"
     },
-    destionationPhone: {
+    destinationPhone: {
         type: String,
-        default: "General"
+        default: "No Destination Phone Recorded"
     },
     description: {
         type: String,
