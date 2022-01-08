@@ -2,28 +2,64 @@
 <html>
 
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"
-        integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
         integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="./main.css" />
     <title>Inventory Tracking Application</title>
 
 </head>
 
 <body>
-    <h1 class="ui center aligned header">Inventory Tracking Application</h1>
-    <div class="ui divider"></div>
+    <h1 class="ui inverted center aligned header">Inventory Tracking Application</h1>
+
+    <div class="ui hidden divider"></div>
 
     <div class="ui container">
-        <h2 class="ui left aligned header">Create Item Here</h2>
-        <form class="ui form item-form">
+        <h2 class="ui left inverted aligned header">Create Item Here</h2>
+        <form class="ui form inverted item-form">
             <div class="field">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" placeholder="Item Name" class="item-name" />
             </div>
 
+            <div class="field">
+                <label for="category">Category</label>
+                <input type="text" name="category" id="category" placeholder="General" class="item-category" />
+            </div>
+
+            <div class="field">
+                <label for="weight">Weight</label>
+                <input type="text" name="weight" id="weight" placeholder="0" class="item-weight" />
+            </div>
+
+            <div class="field">
+                <label for="weight">Source Address</label>
+                <input type="text" name="weight" id="weight" placeholder="Source Address" class="item-src-addr" />
+            </div>
+
+            <div class="field">
+                <label for="weight">Source Phone</label>
+                <input type="text" name="weight" id="weight" placeholder="Source Phone" class="item-src-phone" />
+            </div>
+
+            <div class="field">
+                <label for="weight">Destination Address</label>
+                <input type="text" name="weight" id="weight" placeholder="Destination Address" class="item-dest-addr" />
+            </div>
+
+            <div class="field">
+                <label for="weight">Destination Phone</label>
+                <input type="text" name="weight" id="weight" placeholder="Destination Phone" class="item-dest-phone" />
+            </div>
+
+            <div class="field">
+
+                <div class="ui checkbox">
+                    <input type="checkbox" id="delievered" name="delievered" value="item-delievered">
+                    <label for="delievered">Delievered</label>
+                </div>
+            </div>
 
             <div class="field">
                 <label for="description">Description</label>
@@ -36,20 +72,39 @@
         </form>
     </div>
 
-    <div class="ui divider"></div>
+    <div class="ui hidden divider"></div>
+    <div class="ui hidden divider"></div>
 
     <div class="ui container">
-        <h2 class="ui left aligned header">List of Items in The Inventory</h2>
+        <div class="ui  divider"></div>
+        <h2 class="ui left inverted aligned header">List of Items in The Inventory</h2>
         <section class="items-section">
             <div class="ui loader loader-items"></div>
-            <!-- <div class="ui segments items">
-                <div class="ui segment">Content</div>
-                <div class="ui segment">Content</div>
-                <div class="ui segment">Content</div>
-                <div class="ui segment">Content</div>
-                <div class="ui segment">Content</div>
-            </div> -->
+            <div class="ui segments items">
+            </div>
         </section>
+    </div>
+
+    <div class="ui hidden divider"></div>
+    <div class="ui hidden divider"></div>
+
+    <div class="ui container">
+        <div class="ui  divider"></div>
+        <h2 class="ui left inverted aligned header">Export Product Data to CSV</h2>
+        <h5 class="ui header inverted">Click the button below to export and download product data to products.csv
+            file</p>
+            <div class="ui container">
+                <a href="/api/items/download-csv" class="ui blue button">
+                    Download CSV
+                </a>
+            </div>
+    </div>
+
+    </div>
+
+    <div class="ui hidden divider"></div>
+    <div class="ui hidden divider"></div>
+    <div class="ui hidden divider"></div>
     </div>
 
 

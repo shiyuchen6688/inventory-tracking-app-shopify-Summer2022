@@ -2,30 +2,70 @@
 <html>
 
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"
-        integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
         integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="./main.css" />
     <title>Update Item</title>
 </head>
 
 <body>
-    <h1 class="ui center aligned header">Inventory Tracking Application</h1>
-    <div class="ui divider"></div>
+    <h1 class="ui inverted center aligned header">Inventory Tracking Application</h1>
+
+    <div class="ui hidden divider"></div>
 
     <div class="ui container">
-        <h2 class="ui left aligned header">Update Item Here</h2>
-        <form class="ui form update-item-form">
-            <div class="field">
-                <label>Original Name</label>
-                <p class="item-original-name"></p>
-            </div>
+        <h2 class="ui inverted left aligned header">Update Item Here</h2>
+
+        <div class="ui hidden divider"></div>
+
+        <form class="ui inverted form update-item-form">
+            <h3 class="ui header inverted">Current Item:</h3>
+            <div class="ui segment item-original-info"></div>
+
+            <h3 class="ui header inverted">Enter Values to Update:</h3>
 
             <div class="field">
                 <label for="name">Name</label>
                 <input type="text" name="name" class="item-edit-name" />
+            </div>
+
+            <div class="field">
+                <label for="category">Category</label>
+                <input type="text" name="category" id="category" placeholder="Item Category"
+                    class="item-edit-category" />
+            </div>
+
+            <div class="field">
+                <label for="weight">Weight</label>
+                <input type="text" name="weight" id="weight" placeholder="0" class="item-edit-weight" />
+            </div>
+
+            <div class="field">
+                <label for="weight">Source Address</label>
+                <input type="text" name="weight" id="weight" placeholder="0" class="item-edit-src-addr" />
+            </div>
+
+            <div class="field">
+                <label for="weight">Source Phone</label>
+                <input type="text" name="weight" id="weight" placeholder="0" class="item-edit-src-phone" />
+            </div>
+
+            <div class="field">
+                <label for="weight">Destination Address</label>
+                <input type="text" name="weight" id="weight" placeholder="0" class="item-edit-dest-addr" />
+            </div>
+
+            <div class="field">
+                <label for="weight">Destination Phone</label>
+                <input type="text" name="weight" id="weight" placeholder="0" class="item-edit-dest-phone" />
+            </div>
+
+            <div class="field">
+                <div class="ui checkbox">
+                    <input type="checkbox" id="delievered" name="delievered" value="item-edit-delievered">
+                    <label for="delievered">Delievered</label>
+                </div>
             </div>
 
             <div class="field">
@@ -37,8 +77,8 @@
         </form>
 
         <div class="ui divider"></div>
-
-        <a href="index.html" class="ui button">Home</a>
+        <h2 class="ui inverted left aligned header">To Go Back:</h2>
+        <a href="index.html" class="ui button">Back Home</a>
     </div>
 
     <!-- link to javascript -->

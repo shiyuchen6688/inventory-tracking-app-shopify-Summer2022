@@ -1,4 +1,4 @@
-const mongoose = requier("mongoose")
+const mongoose = require("mongoose")
 
 const ItemSchema = new mongoose.Schema({
     name: {
@@ -7,11 +7,27 @@ const ItemSchema = new mongoose.Schema({
         trim: true,
         maxLength: [30, "name is limited to 30 characters"],
     },
-    count: {
-        type: integer,
+    weight: {
+        type: Number,
         default: 0
     },
     category: {
+        type: String,
+        default: "General"
+    },
+    sourceAddress: {
+        type: String,
+        default: "General"
+    },
+    sourcePhone: {
+        type: String,
+        default: "General"
+    },
+    destinationAddress: {
+        type: String,
+        default: "General"
+    },
+    destionationPhone: {
         type: String,
         default: "General"
     },
@@ -22,7 +38,11 @@ const ItemSchema = new mongoose.Schema({
     dateCreated: {
         type: Date,
         default: Date.now
+    },
+    delivered: {
+        type: Boolean,
+        default: false
     }
-})
+}, { versionKey: false })
 
 module.exports = mongoose.model('Item', ItemSchema)

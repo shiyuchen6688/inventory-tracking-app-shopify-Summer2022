@@ -1,38 +1,46 @@
-const { default: axios } = require("axios")
-
 const itemForm = document.querySelector(".item-form")
-const itemNameInput = document.querySelector("item-name")
-const itemDescrition = document.querySelector("item-description")
+const itemNameInput = document.querySelector(".item-name")
+const itemCountInput = document.querySelector(".item-count")
+const itemCategoryInput = document.querySelector(".item-category")
+const itemDescrition = document.querySelector(".item-description")
 const itemsDiv = document.querySelector(".items")
 const loaderItems = document.querySelector(".loader-items")
+// TODO: get count and category
 
 // Display items onto index.html, get items in strorage from backend api
 const displayItems = async () => {
     loaderItems.style.visiblity = 'visible'
     try {
         const result = await axios.get("api/items")
-        const { items } = result
+        console.log(result)
+        const { items } = result.data
 
-        if (loaderItems.length < 1) {
-            itemsDiv.innerHTML = "<p>You Don't Have Any Item Yet</p>"
+        if (items.length < 1) {
+            itemsDiv.innerHTML = `<h5 class="ui inverted header">You Don't Have Any Item Yet</h5>`
             return
         }
 
         const itemSegments = items.map((item) => {
-            const { name, description } = item
-            return `<div class="ui segment">
-            <h5>${name}</h5>
-            <p>${description}</p>
-            <div class="item-buttons">
-            <!-- edit link -->
-            <a href="item.html?id=${itemID}"  class="edit-link">
-            <i class="fas fa-edit"></i>
-            </a>
-            <!-- delete btn -->
-            <button type="button" class="delete-btn" data-id="${itemID}">
-            <i class="fas fa-trash"></i>
-            </button>
-            </div>
+            const { _id, name, description, count, category, dateCreated } = item
+            return `
+            <div class="ui segment">
+            <h4 class="ui dividing header">Name: ${name}</h5>
+            <p>Count: ${count}</h5>
+            <p>Category: ${category}</h5>
+            <p>Date Created: ${dateCreated}</h5>
+            <p>Description: ${description}</p>
+                <div class="ui buttons">
+
+                    <a href="item.html?id=${_id}"  class="ui green button">
+                    edit
+                    </a>
+
+                    <div class="or"></div>
+
+                    <button type="button" class="ui button red delete-btn" data-id="${_id}">
+                    delete
+                    </button>
+                </div>
             </div>`
         }).join("")
 
@@ -49,11 +57,15 @@ const displayItems = async () => {
 displayItems() // call to display all items at the start
 
 // Delete Task Button
-tasksDOM.addEventListener('click', async (e) => {
-    const el = e.target
-    if (el.parentElement.classList.contains('delete-btn')) {
+itemsDiv.addEventListener('click', async (e) => {
+    console.log("Item Clicked")
+    console.log(e.target.classList)
+    console.log(e.target.parentElement.classList.contains('delete-btn'))
+    if (e.target.classList.contains('delete-btn')) {
+        console.log("Delete button clicked")
         loaderItems.style.visibility = 'visible'
-        const id = el.parentElement.dataset.id
+        const id = e.target.dataset.id
+        console.log(id)
         try {
             await axios.delete(`/api/items/${id}`)
             displayItems()
@@ -67,11 +79,13 @@ tasksDOM.addEventListener('click', async (e) => {
 // Add Item Form
 itemForm.addEventListener("submit", async (e) => {
     e.preventDefault()
-    const name = itemNameInput.value
-    const description = itemDescrition.value
-
     try {
-        await axios.post("api/items", { name, description })
+        const name = itemNameInput.value
+        const category = itemCategoryInput.value
+        const count = Number(itemCountInput.value)
+        const description = itemDescrition.value
+
+        await axios.post("api/items", { name, description, category, count })
         displayItems()
     } catch (error) {
         alert(error)
