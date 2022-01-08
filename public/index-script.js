@@ -112,7 +112,7 @@ itemForm.addEventListener("submit", async (e) => {
             name, description, category, weight, sourceAddress, destinationAddress,
             sourcePhone, destinationPhone, delivered
         })
-        alert("success, new item added, you can see it in the list below")
+        alert("success, new item added, you can check it in the list below")
         displayItems()
     } catch (error) {
         alert(error)

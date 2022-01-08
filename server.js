@@ -9,7 +9,9 @@ const itemsRoute = require("./routes/item")
 
 // middlewares
 app.use(express.static('./public'))
-app.use(express.json())
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
+
 
 // routes
 app.use('/api/items', itemsRoute)
@@ -32,3 +34,5 @@ const start = async () => {
 }
 
 start()
+
+module.exports = app

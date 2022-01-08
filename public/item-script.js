@@ -95,7 +95,7 @@ updateItemForm.addEventListener("submit", async (e) => {
         })
 
 
-        alert(`Success, if you're done: go back to Home Page using the buttom at the bottom`)
+        alert(`Success! if you're done: go back to Home Page using the button at the bottom`)
         displayItem()
 
     } catch (error) {
