@@ -6,6 +6,7 @@ class ItemApiError extends Error {
         this.message = errorMessage ||
             'Something Went Wrong, Please Try Again Later';
         this.statusCode = statusCode || 500;
+        console.log(this.message)
 
     }
 }

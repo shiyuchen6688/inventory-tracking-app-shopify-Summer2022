@@ -121,7 +121,7 @@ itemForm.addEventListener("submit", async (e) => {
         // console.log(error)
         formAlertDOM.classList.add('negative')
         formAlertDOM.style.display = 'block'
-        formAlertDOM.textContent = "error, please check if your requuired, phone number and weight is valid"
+        formAlertDOM.textContent = "error, please check if the required fields are not empty, phone number and weight is valid"
     }
     setTimeout(() => {
         formAlertDOM.style.display = 'none'

@@ -78,7 +78,6 @@ updateItemForm.addEventListener("submit", async (e) => {
         const updatedDelievered = itemEditDelievered.checked
         const updatedCategory = itemEditCategory.value
         const updatedDescription = itemEditDescription.value
-        console.log(updatedDescription)
 
 
         const result = await axios.put(`/api/items/${id}`, {
@@ -103,7 +102,7 @@ updateItemForm.addEventListener("submit", async (e) => {
         // console.log(error)
         formAlertDOM.classList.add('negative')
         formAlertDOM.style.display = 'block'
-        formAlertDOM.textContent = "error, please try again later"
+        formAlertDOM.textContent = "error, please check if the required fields are not empty, phone number and weight is valid"
     }
 
     setTimeout(() => {

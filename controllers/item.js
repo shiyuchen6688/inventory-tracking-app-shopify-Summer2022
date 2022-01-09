@@ -21,6 +21,22 @@ const getOneItem = async (req, res) => {
 }
 const updateItem = async (req, res) => {
     console.log("updateItem")
+    if (!validPhoneNumber(req.body.sourcePhone) || !validPhoneNumber(req.body.destinationPhone)) {
+        throw new ItemApiError("invalid phone number", 400)
+    }
+    if (!isNumeric(req.body.weight) || isEmpty(req.body.weight)) {
+        console.log(req.body.weight)
+        throw new ItemApiError("invalid weight", 400)
+    }
+    if (isEmpty(req.body.name)) {
+        throw new ItemApiError("invalid name", 400)
+    }
+    if (isEmpty(req.body.sourceAddress)) {
+        throw new ItemApiError("invalid source address", 400)
+    }
+    if (isEmpty(req.body.destinationAddress)) {
+        throw new ItemApiError("invalid destination address", 400)
+    }
     const item = await Item.findOneAndUpdate({ _id: req.params.id }, req.body)
     if (!item || item.length == 0) {
         throw new ItemNotFoundError();
@@ -45,6 +61,7 @@ const createItem = async (req, res) => {
         throw new ItemApiError("invalid phone number", 400)
     }
     if (!isNumeric(req.body.weight) || isEmpty(req.body.weight)) {
+        console.log(req.body.weight)
         throw new ItemApiError("invalid weight", 400)
     }
     if (isEmpty(req.body.name)) {
@@ -70,14 +87,14 @@ function validPhoneNumber(phoneNumber) {
     return re.test(phoneNumber);
 }
 
-function isNumeric(str) {
-    if (typeof str != "string") return false // we only process strings!  
-    return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
-        !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+function isNumeric(input) {
+    if (typeof input != "string" && typeof input != "number") return false
+    return !isNaN(input) && !isNaN(parseFloat(input)) // whitespace fail
 }
 
-function isEmpty(str) {
-    return !str.trim().length;
+function isEmpty(input) {
+    input = String(input)
+    return input == null || !input.trim().length;
 }
 
 module.exports = {
