@@ -39,7 +39,6 @@ const displayItems = async () => {
             <h4 class="ui dividing header">Name: ${name}</h5>
             <p>Weight: ${weight}</h5>
             <p>Category: ${category}</h5>
-            <p>Date Created: ${dateCreated}</h5>
             <p>Source Address: ${sourceAddress}</h5>
             <p>Source Phone: ${sourcePhone}</h5>
             <p>Destination Address: ${destinationAddress}</h5>
