@@ -21,7 +21,7 @@ app.use(notFoundMiddleware)
 app.use(errorMiddleware)
 
 // server listening on port
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 const start = async () => {
     try {
         await connectDB(process.env.MONGO);

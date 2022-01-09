@@ -11,20 +11,18 @@ const itemEditDestPhone = document.querySelector(".item-edit-dest-phone")
 const itemEditDelievered = document.querySelector(".item-edit-delivered")
 const itemEditCategory = document.querySelector(".item-edit-category")
 const itemEditDescription = document.querySelector(".item-edit-description")
+const formAlertDOM = document.querySelector('.form-alert')
 
 // get and show information about the selected item
 const displayItem = async () => {
     try {
-        console.log(id)
         const result = await axios.get(`/api/items/${id}`)
-        console.log(result)
         const { data } = result
         const { item } = data
         const {
             name, description, category, weight, sourceAddress, destinationAddress,
             sourcePhone, destinationPhone, delivered
         } = item[0]
-        console.log(name)
 
         let deliveredStr;
         if (Boolean(delivered) === true)
@@ -61,15 +59,17 @@ const displayItem = async () => {
     }
 }
 
+// Script Start Here
+
 displayItem()
+formAlertDOM.style.display = 'none' // hide alert at the start
+
 
 // handle update request on item
 updateItemForm.addEventListener("submit", async (e) => {
     e.preventDefault()
     try {
-        // TODO: chaneg attributes here
         const updatedName = itemEditName.value
-        console.log(updatedName)
         const updatedWeight = Number(itemEditWeight.value)
         const updatedSrcAddr = itemEditSourceAddress.value
         const updatedSrcPhone = itemEditSourcePhone.value
@@ -77,7 +77,6 @@ updateItemForm.addEventListener("submit", async (e) => {
         const updatedDestPhone = itemEditDestPhone.value
         const updatedDelievered = itemEditDelievered.checked
         const updatedCategory = itemEditCategory.value
-        console.log(updatedCategory)
         const updatedDescription = itemEditDescription.value
         console.log(updatedDescription)
 
@@ -95,10 +94,22 @@ updateItemForm.addEventListener("submit", async (e) => {
         })
 
 
-        alert(`Success! if you're done: go back to Home Page using the button at the bottom`)
+        // alert(`success, if you're done, press the Back Home button at the bottom`)
         displayItem()
-
+        formAlertDOM.style.display = 'block'
+        formAlertDOM.textContent = `success, if you're done, press the Back Home button at the bottom`
+        formAlertDOM.classList.add('positive')
     } catch (error) {
-        alert(error)
+        // console.log(error)
+        formAlertDOM.classList.add('negative')
+        formAlertDOM.style.display = 'block'
+        formAlertDOM.textContent = "error, please try again later"
     }
+
+    setTimeout(() => {
+        formAlertDOM.style.display = 'none'
+        formAlertDOM.classList.remove('positive')
+        formAlertDOM.classList.remove('negative')
+    }, 3000)
 })
+

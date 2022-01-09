@@ -1,6 +1,6 @@
 const ItemApiError = require("../error/ItemApiError")
 const errorHandlerMiddleware = async (err, req, res, next) => {
-    console.log(err)
+    console.log("errorHandlerMiddleware fired")
 
     if (err instanceof ItemApiError) {
         return res.status(err.statusCode).json({

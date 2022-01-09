@@ -10,13 +10,13 @@ const itemDelieveredInput = document.querySelector(".item-delivered")
 const itemDescrition = document.querySelector(".item-description")
 const itemsDiv = document.querySelector(".items")
 const loaderItems = document.querySelector(".loader-items")
+const formAlertDOM = document.querySelector('.form-alert')
 
 // Display items onto index.html, get items in strorage from backend api
 const displayItems = async () => {
     loaderItems.style.visiblity = 'visible'
     try {
         const result = await axios.get("api/items")
-        console.log(result)
         const { items } = result.data
 
         if (items.length < 1) {
@@ -71,18 +71,16 @@ const displayItems = async () => {
 
 }
 
+// Script Start Here
+
 displayItems() // call to display all items at the start
+formAlertDOM.style.display = 'none' // hide alert at the start
 
 // Delete Task Button
 itemsDiv.addEventListener('click', async (e) => {
-    console.log("Item Clicked")
-    console.log(e.target.classList)
-    console.log(e.target.parentElement.classList.contains('delete-btn'))
     if (e.target.classList.contains('delete-btn')) {
-        console.log("Delete button clicked")
         loaderItems.style.visibility = 'visible'
         const id = e.target.dataset.id
-        console.log(id)
         try {
             await axios.delete(`/api/items/${id}`)
             displayItems()
@@ -107,13 +105,27 @@ itemForm.addEventListener("submit", async (e) => {
         const delivered = itemDelieveredInput.checked
         const description = itemDescrition.value
 
-        await axios.post("api/items", {
+        itemForm.reset() // clear form
+        const result = await axios.post("api/items", {
             name, description, category, weight, sourceAddress, destinationAddress,
             sourcePhone, destinationPhone, delivered
         })
-        alert("success, new item added, you can check it in the list below")
+        // TODO: if !result.item and result.message, display error
+
         displayItems()
+        formAlertDOM.style.display = 'block'
+        formAlertDOM.textContent = `success, new item added, you can check it in the list below`
+        formAlertDOM.classList.add('positive')
     } catch (error) {
-        alert(error)
+        // alert(error)
+        // console.log(error)
+        formAlertDOM.classList.add('negative')
+        formAlertDOM.style.display = 'block'
+        formAlertDOM.textContent = "error, please check if your requuired, phone number and weight is valid"
     }
+    setTimeout(() => {
+        formAlertDOM.style.display = 'none'
+        formAlertDOM.classList.remove('positive')
+        formAlertDOM.classList.remove('negative')
+    }, 3000)
 })

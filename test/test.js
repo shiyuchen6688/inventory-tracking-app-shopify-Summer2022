@@ -23,7 +23,6 @@ describe('Items API', () => {
                 .get('/api/items')
                 .end((err, res) => {
                     res.should.have.status(200);
-                    console.log(res.body)
                     res.body.should.have.property('message').eql('All items successfully retrieved');
                     res.body.items.should.be.a('array');
                     res.body.items.length.should.be.eql(0);

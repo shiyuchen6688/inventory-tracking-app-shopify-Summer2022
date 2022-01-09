@@ -19,7 +19,7 @@
         <h2 class="ui left inverted aligned header">Create Item Here</h2>
         <form class="ui form inverted item-form">
             <div class="field">
-                <label for="name">Name</label>
+                <label for="name">Name (required)</label>
                 <input type="text" name="name" id="name" placeholder="Item Name" class="item-name" />
             </div>
 
@@ -29,27 +29,27 @@
             </div>
 
             <div class="field">
-                <label for="weight">Weight</label>
+                <label for="weight">Weight (required)</label>
                 <input type="text" name="weight" id="weight" placeholder="0" class="item-weight" />
             </div>
 
             <div class="field">
-                <label for="weight">Source Address</label>
+                <label for="weight">Source Address (required)</label>
                 <input type="text" name="weight" id="weight" placeholder="Source Address" class="item-src-addr" />
             </div>
 
             <div class="field">
-                <label for="weight">Source Phone</label>
+                <label for="weight">Source Phone (required)</label>
                 <input type="text" name="weight" id="weight" placeholder="Source Phone" class="item-src-phone" />
             </div>
 
             <div class="field">
-                <label for="weight">Destination Address</label>
+                <label for="weight">Destination Address (required)</label>
                 <input type="text" name="weight" id="weight" placeholder="Destination Address" class="item-dest-addr" />
             </div>
 
             <div class="field">
-                <label for="weight">Destination Phone</label>
+                <label for="weight">Destination Phone (required)</label>
                 <input type="text" name="weight" id="weight" placeholder="Destination Phone" class="item-dest-phone" />
             </div>
 
@@ -58,7 +58,7 @@
                 <div class="ui checkbox">
                     <input type="checkbox" id="delivered" name="delivered" value="item-delivered"
                         class="item-delivered">
-                    <label for="delivered">Delivered</label>
+                    <label for="delivered">Delivered (required)</label>
                 </div>
             </div>
 
@@ -69,6 +69,7 @@
             </div>
 
             <button class="ui button large" type="submit">Add Item To Inventory</button>
+            <div class="ui message form-alert"></div>
 
         </form>
     </div>

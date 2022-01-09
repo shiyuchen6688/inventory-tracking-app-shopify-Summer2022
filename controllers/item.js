@@ -1,5 +1,6 @@
 const Item = require("../models/item")
 const ItemNotFoundError = require("../error/ItemNotFoundError")
+const ItemApiError = require("../error/ItemApiError")
 
 const getAllItems = async (req, res) => {
     const items = await Item.find({})
@@ -40,11 +41,43 @@ const deleteItem = async (req, res) => {
     })
 }
 const createItem = async (req, res) => {
+    if (!validPhoneNumber(req.body.sourcePhone) || !validPhoneNumber(req.body.destinationPhone)) {
+        throw new ItemApiError("invalid phone number", 400)
+    }
+    if (!isNumeric(req.body.weight) || isEmpty(req.body.weight)) {
+        throw new ItemApiError("invalid weight", 400)
+    }
+    if (isEmpty(req.body.name)) {
+        throw new ItemApiError("invalid name", 400)
+    }
+    if (isEmpty(req.body.sourceAddress)) {
+        throw new ItemApiError("invalid source address", 400)
+    }
+    if (isEmpty(req.body.destinationAddress)) {
+        throw new ItemApiError("invalid destination address", 400)
+    }
     const item = await Item.create(req.body)
     res.status(201).json({
         message: "One item successfully added",
         item
     })
+}
+
+
+function validPhoneNumber(phoneNumber) {
+    var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+
+    return re.test(phoneNumber);
+}
+
+function isNumeric(str) {
+    if (typeof str != "string") return false // we only process strings!  
+    return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+        !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+}
+
+function isEmpty(str) {
+    return !str.trim().length;
 }
 
 module.exports = {
