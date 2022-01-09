@@ -1,8 +1,8 @@
-const ItemError = require("../error/ItemError")
+const ItemApiError = require("../error/ItemApiError")
 const errorHandlerMiddleware = async (err, req, res, next) => {
     console.log(err)
 
-    if (err instanceof ItemError) {
+    if (err instanceof ItemApiError) {
         return res.status(err.statusCode).json({
             message: err.message
         })

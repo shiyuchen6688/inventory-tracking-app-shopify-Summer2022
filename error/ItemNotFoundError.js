@@ -1,6 +1,6 @@
-const ItemError = require("./ItemError")
+const ItemApiError = require("./ItemApiError")
 
-class ItemNotFoundError extends ItemError {
+class ItemNotFoundError extends ItemApiError {
     constructor() {
         super("Item Does Not Exist", 404)
     }
