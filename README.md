@@ -5,6 +5,12 @@ The link is "https://inventory-tracker-application.herokuapp.com/" just in case 
 
 # How to use?
 
+## Video Version
+
+This video will demonstrate how to use this application: [video](https://1drv.ms/v/s!AifJ7njqYAoVo6Fg8KOtZvF4YgmlJQ?e=M5vheo)
+
+## Text Version (Only if it’s not convenient to watch the video)
+
 - How to Create?
 
   The link above will take you to the home page, and there are 3 sections on the home page. The 1st section with title "Create Item Here" is where you can enter data and create inventory items
