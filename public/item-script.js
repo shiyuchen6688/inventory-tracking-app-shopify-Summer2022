@@ -109,6 +109,6 @@ updateItemForm.addEventListener("submit", async (e) => {
         formAlertDOM.style.display = 'none'
         formAlertDOM.classList.remove('positive')
         formAlertDOM.classList.remove('negative')
-    }, 3000)
+    }, 5000)
 })
 
