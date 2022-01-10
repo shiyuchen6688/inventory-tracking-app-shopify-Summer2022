@@ -30,7 +30,7 @@ const displayItem = async () => {
         else
             deliveredStr = "No"
 
-        const itemInfo = ("Original Item: <br/>" +
+        const itemInfo = (
             `Name: ${name} <br/>` +
             `Category: ${category} <br/>` +
             `Weight: ${weight} <br/>` +
